@@ -14,6 +14,7 @@ public class TicTacToeGame {
     }
 
     public void play() {
+    	System.out.println("Start game: ");
         initializePlayers();
         ScoreTracker.setPlayers(players.toArray());
 

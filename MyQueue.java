@@ -105,6 +105,15 @@ public class MyQueue<T> implements QueueInterface<T> {
 
 			    return result;
 			}
+		 
+		 public void swap() {
+		        if (size() == 2) {
+		            T first = dequeue();
+		            T second = dequeue();
+		            enqueue(second);
+		            enqueue(first);
+		        }
+		    }
 
 
 		 

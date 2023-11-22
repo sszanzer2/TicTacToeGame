@@ -17,7 +17,7 @@ public class ScoreTracker {
 
     private static void initializePlayerScores(List<Player> players) {
         for (Player player : players) {
-            playerScores.put(player.getName(), player.getScore());
+            playerScores.put(player.getName(), 0); // Initialize scores to 0
         }
     }
 
@@ -28,7 +28,7 @@ public class ScoreTracker {
 
     private static void updateTotalScore(Player player) {
         String playerName = player.getName();
-        int totalScore = playerScores.getOrDefault(playerName, 0) + player.getScore();
+        int totalScore = playerScores.getOrDefault(playerName, 0) + 1; // Increment by 1, not player.getScore()
         playerScores.put(playerName, totalScore);
     }
 
@@ -42,7 +42,7 @@ public class ScoreTracker {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
-    
+
     public static String getFinalWinner() {
         String winner = null;
         int maxScore = Integer.MIN_VALUE;

@@ -1,5 +1,5 @@
 package ss;
-
+//score doubles every time
 import java.util.Scanner;
 
 public class TicTacToeMain {
@@ -14,44 +14,46 @@ public class TicTacToeMain {
                 + "- If the grid is filled without a winner, the game is a draw. \nTo start:");
 
         GameBoard board = new GameBoard();
-
+        int choice;
         while (true) {
-            int choice;
-            while (true) {
-                System.out.println("Choose an option:");
-                System.out.println("1. Play against the computer");
-                System.out.println("2. Play against 2 human players");
-                System.out.print("Enter your choice (1 or 2): ");
+            System.out.println("Choose an option:");
+            System.out.println("1. Play against the computer");
+            System.out.println("2. Play against 2 human players");
+            System.out.print("Enter your choice (1 or 2): ");
 
-                try {
-                    choice = Integer.parseInt(scanner.nextLine());
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
 
-                    if (choice == 1 || choice == 2) {
-                        break;
-                    } else {
-                        System.out.println("Invalid choice. Please enter 1 or 2.");
-                    }
-                } catch (NumberFormatException e) {
+                if (choice == 1 || choice == 2) {
+                    break;
+                } else {
                     System.out.println("Invalid choice. Please enter 1 or 2.");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
             }
+        }
 
-            Player playerX, playerO;
-            if (choice == 1) {
-                playerX = new HumanPlayer('X', getPlayerName(scanner, "X"));
-                playerO = new ComputerPlayer('O', "Computer");
-            } else {
-                playerX = new HumanPlayer('X', getPlayerName(scanner, "X"));
-                playerO = new HumanPlayer('O', getPlayerName(scanner, "O"));
-            }
+        Player playerX, playerO;
+        if (choice == 1) {
+            playerX = new HumanPlayer('X', getPlayerName(scanner, "X"));
+            playerO = new ComputerPlayer('O', "Computer");
+        } else {
+            playerX = new HumanPlayer('X', getPlayerName(scanner, "X"));
+            playerO = new HumanPlayer('O', getPlayerName(scanner, "O"));
+        }
 
-            MyQueue<Player> playersQueue = new MyQueue<>();
-            playersQueue.enqueue(playerX);
-            playersQueue.enqueue(playerO);
+        MyQueue<Player> playersQueue = new MyQueue<>();
+        playersQueue.enqueue(playerX);
+        playersQueue.enqueue(playerO);
 
+        while (true) {
+            
+        	
             TicTacToeGame game = new TicTacToeGame(playersQueue, board);
 
             game.play();
+            playersQueue.swap();
 
             if (!playAgain(scanner)) {
                 ScoreTracker.displayScores(); // Display total scores at the end of all games
