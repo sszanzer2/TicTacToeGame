@@ -18,7 +18,7 @@ public class HumanPlayer implements Player{
     public int getScore() {
         return score;
     }
-
+    @Override
     public void incrementScore() {
         score++;
     }

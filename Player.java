@@ -5,4 +5,5 @@ public interface Player {
     String getName();
     int getScore();
 	void setSymbol(char c);
+	void incrementScore();
 }

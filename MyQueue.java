@@ -1,5 +1,8 @@
 package ss;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyQueue<T> implements QueueInterface<T> {
 		 private static final int INITIAL_CAPACITY = 2;
 		 private Object[] array;
@@ -93,18 +96,16 @@ public class MyQueue<T> implements QueueInterface<T> {
 		   }
 		 }
 		 
-		
-		 @SuppressWarnings("unchecked")
-		 public T[] toArray() {
-		     T[] result = (T[]) new Player[size];
-		     int index = 0;
+		 public List<Player> toArray() {
+			    List<Player> result = new ArrayList<>(size);
 
-		     for (int i = 0; i < size; i++) {
-		         result[i] = (T) array[(head + i) % array.length];
-		     }
+			    for (int i = 0; i < size; i++) {
+			        result.add((Player) array[(head + i) % array.length]);
+			    }
 
-		     return result;
-		 }
+			    return result;
+			}
+
 
 		 
 		 @Override

@@ -36,15 +36,7 @@ class QueueTest {
 		
 	}
 	
-	/*@Test
-	public void TestingToArrayIfCorrect() {
-		MyQueue<String> myqueue = new MyQueue<>();
-		myqueue.enqueue("PlayerX");
-		myqueue.enqueue("PlayerO");
-		
-		String[] array = myqueue.toArray();
-		assertArrayEquals(new String[]{"PlayerX", "PlayerO"}, array);
-	}*/
+	
 	
 	
 
